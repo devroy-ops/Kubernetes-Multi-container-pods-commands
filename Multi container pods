@@ -1,0 +1,34 @@
+******************************Start*******************************************
+
+
+Note:- Multicontainer pod commands
+
+Step-1 vi pod2.yml
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod3
+spec:
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Technical-Guftgu; sleep 5 ; done"]
+    - name: c01
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+
+
+
+Step-2 kubectl apply -f pod1.yml
+
+Step-3 kubectl get pods
+
+Step-4 kubectl logs -f testpod3 -c c00 (check pod logs)
+
+Step-5 kubectl exec testpod3 -c c00 -- hostname -i (check specific details)
+
+Step-6 kubectl exec testpod3 -it -c c002 -- /bin/bash (check to container)
+
+
+*************************************END**********************************************
